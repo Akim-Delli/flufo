@@ -63,7 +63,9 @@ class Tilemap {
         final char = line[col];
         seenBoundsStart = seenBoundsStart || char == BOUNDS_START;
         if (seenBoundsStart) {
-          tiles[tileRow * ncols + col] = _tileFromChar(char);
+          final idx = tileRow * ncols + col;
+          assert(idx < tiles.length);
+          tiles[idx] = _tileFromChar(char);
         }
         if (char == BOUNDS_END) break;
       }
